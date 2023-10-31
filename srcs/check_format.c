@@ -6,11 +6,10 @@
 /*   By: tchaves <tchaves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:15:31 by tchaves           #+#    #+#             */
-/*   Updated: 2023/10/20 14:34:07 by tchaves          ###   ########.fr       */
+/*   Updated: 2023/10/30 15:30:59 by tchaves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/libft.h"
 #include "../lib/ft_printf.h"
 
 int	check_format(const char *arg, int i, va_list ap)
@@ -24,10 +23,7 @@ int	check_format(const char *arg, int i, va_list ap)
 	else if (arg[i + 1] == 'u')
 		return (ft_putunsnbr(va_arg(ap, unsigned int)));
 	else if (arg[i + 1] == 'p')
-	{
-		ft_putstr("0x");
-		return (ft_puthex(va_arg(ap, unsigned int), 'x'));
-	}
+		return (ft_puthex(va_arg(ap, unsigned long), 'p') + 2);
 	else if (arg[i + 1] == 'x' || arg[i + 1] == 'X')
 		return (ft_puthex(va_arg(ap, unsigned int), arg[i + 1]));
 	else if (arg[i + 1] == '%')

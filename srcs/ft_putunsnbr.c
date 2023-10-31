@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putunsnbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchaves <tchaves@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 12:19:27 by tchaves           #+#    #+#             */
-/*   Updated: 2023/10/20 14:28:52 by tchaves          ###   ########.fr       */
+/*   Created: 2023/10/20 12:21:55 by tchaves           #+#    #+#             */
+/*   Updated: 2023/10/30 15:29:31 by tchaves          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putunsnbr(unsigned int num)
 {
-	write(1, &c, 1);
-	return (1);
+	static unsigned int		count;
+	unsigned int			sign;
+
+	sign = 0;
+	count = 0;
+	if (num >= 10)
+		ft_putunsnbr(num / 10);
+	count += ft_putchar((num % 10) + 48);
+	return (count + sign);
 }
